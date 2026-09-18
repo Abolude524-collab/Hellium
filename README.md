@@ -134,6 +134,28 @@ npm run start
 
 ---
 
+## 🚀 Netlify Deployment Guide
+
+Hellium includes a pre-configured [`netlify.toml`](./netlify.toml) file ready for Next.js 14 App Router deployment:
+
+1. **Push Repository to GitHub / GitLab / Bitbucket**.
+2. **Import to Netlify**:
+   - Log into [Netlify.com](https://app.netlify.com).
+   - Click **"Add new site"** $\rightarrow$ **"Import an existing project"**.
+   - Select your Hellium repository.
+3. **Configure Environment Variables**:
+   - In **Site Settings** $\rightarrow$ **Environment variables**, add your Firebase keys:
+     - `NEXT_PUBLIC_FIREBASE_API_KEY`
+     - `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+     - `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+     - `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+     - `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+     - `NEXT_PUBLIC_FIREBASE_APP_ID`
+4. **Deploy**:
+   - Click **Deploy Site**. Netlify will use `@netlify/plugin-nextjs` to build and serve your application.
+
+---
+
 ## 🔒 Firestore Security Rules Setup
 
 To deploy the user data isolation security rules to Firebase:
@@ -148,4 +170,3 @@ Or paste the contents of [`firestore.rules`](./firestore.rules) into the **Rules
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
-"# Hellium" 
