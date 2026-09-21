@@ -158,34 +158,34 @@ export default function TransactionsPage() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="font-montserrat text-3xl font-extrabold tracking-tight text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="font-montserrat text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
             Transactions
           </h1>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-gray-400 text-xs sm:text-sm mt-1 break-words">
             Reviewing expenses in base currency ({baseCurrency}) for{' '}
             <strong className="text-white">{filterPeriodLabel}</strong>.
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+        <div className="grid grid-cols-2 gap-2 w-full sm:flex sm:items-center sm:gap-3 sm:w-auto">
           <button
             onClick={handleExportCSV}
             disabled={filteredExpenses.length === 0}
-            className="flex-1 sm:flex-none inline-flex items-center justify-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl bg-space-900 border border-space-800 hover:border-purple-500/50 text-gray-200 hover:text-white font-montserrat text-xs font-semibold transition-all active:scale-95 disabled:opacity-50"
+            className="inline-flex items-center justify-center space-x-1.5 px-2.5 sm:px-4 py-2.5 rounded-xl bg-space-900 border border-space-800 hover:border-purple-500/50 text-gray-200 hover:text-white font-montserrat text-xs font-semibold transition-all active:scale-95 disabled:opacity-50"
             title="Export filtered transactions to CSV"
           >
-            <Download className="w-4 h-4 text-purple-400 flex-shrink-0" />
-            <span className="whitespace-nowrap">Export CSV</span>
+            <Download className="w-3.5 h-3.5 text-purple-400 flex-shrink-0" />
+            <span className="truncate">Export CSV</span>
           </button>
 
           <button
             onClick={handleOpenAddModal}
-            className="flex-1 sm:flex-none inline-flex items-center justify-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-montserrat text-xs sm:text-sm font-semibold shadow-purple-glow transition-all active:scale-95"
+            className="inline-flex items-center justify-center space-x-1.5 px-2.5 sm:px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-montserrat text-xs sm:text-sm font-semibold shadow-purple-glow transition-all active:scale-95"
           >
             <Plus className="w-4 h-4 flex-shrink-0" />
-            <span className="whitespace-nowrap">New Expense</span>
+            <span className="truncate">New Expense</span>
           </button>
         </div>
       </div>

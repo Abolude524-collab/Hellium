@@ -162,12 +162,12 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       {/* Dashboard Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="font-montserrat text-3xl font-extrabold tracking-tight text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="font-montserrat text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
             Dashboard & Analytics
           </h1>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-gray-400 text-xs sm:text-sm mt-1 break-words">
             Analyzing spending in <span className="text-purple-400 font-semibold">{baseCurrency}</span> for{' '}
             <strong className="text-white">{filterPeriodLabel}</strong>.
           </p>
@@ -175,9 +175,9 @@ export default function DashboardPage() {
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-montserrat text-sm font-semibold shadow-purple-glow transition-all active:scale-95"
+          className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-montserrat text-xs sm:text-sm font-semibold shadow-purple-glow transition-all active:scale-95 w-full sm:w-auto"
         >
-          <Plus className="w-4 h-4" />
+          <Plus className="w-4 h-4 flex-shrink-0" />
           <span>Add Expense</span>
         </button>
       </div>

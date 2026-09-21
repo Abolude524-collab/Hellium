@@ -150,21 +150,21 @@ export default function GoalsPage() {
   return (
     <div className="space-y-8">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="font-montserrat text-3xl font-extrabold tracking-tight text-white">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="font-montserrat text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
             Financial Goals
           </h1>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-gray-400 text-xs sm:text-sm mt-1 break-words">
             Set savings targets, track deposit progress, and manage multi-currency goals in {baseCurrency}.
           </p>
         </div>
 
         <button
           onClick={handleOpenAddGoal}
-          className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-montserrat text-sm font-semibold shadow-purple-glow transition-all active:scale-95"
+          className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-montserrat text-xs sm:text-sm font-semibold shadow-purple-glow transition-all active:scale-95 w-full sm:w-auto"
         >
-          <Plus className="w-4 h-4" />
+          <Plus className="w-4 h-4 flex-shrink-0" />
           <span>Create New Goal</span>
         </button>
       </div>

@@ -15,13 +15,13 @@ export const AppShell: React.FC<{ children: React.ReactNode }> = ({ children }) 
 
   return (
     <ProtectedRoute>
-      <div className="flex min-h-screen">
+      <div className="flex min-h-screen max-w-full overflow-x-hidden">
         {/* Navigation Sidebar */}
         <Sidebar />
 
         {/* Main Content View Container */}
-        <div className="flex-1 md:ml-64 flex flex-col min-h-screen">
-          <main className="flex-1 px-4 py-6 md:p-8 max-w-7xl mx-auto w-full mt-16 md:mt-0">{children}</main>
+        <div className="flex-1 md:ml-64 flex flex-col min-h-screen min-w-0 max-w-full">
+          <main className="flex-1 px-3.5 sm:px-6 py-4 sm:py-8 max-w-7xl mx-auto w-full mt-16 md:mt-0 min-w-0">{children}</main>
 
           {/* Footer */}
           <footer className="p-6 text-center text-xs text-gray-500 border-t border-space-900">
