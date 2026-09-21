@@ -22,6 +22,17 @@ const CURRENCY_PALETTE: Record<string, string> = {
 };
 
 export const CurrencyMixChart: React.FC<CurrencyMixChartProps> = ({ expenses }) => {
+  const [isMobile, setIsMobile] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const checkMobile = () => setIsMobile(window.innerWidth < 640);
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+    }
+  }, []);
+
   if (expenses.length === 0) {
     return (
       <div className="h-48 border border-dashed border-space-800 rounded-xl flex items-center justify-center text-gray-500 text-xs">
@@ -61,10 +72,11 @@ export const CurrencyMixChart: React.FC<CurrencyMixChartProps> = ({ expenses }) 
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'right' as const,
+        position: isMobile ? ('bottom' as const) : ('right' as const),
         labels: {
           color: '#D1D5DB',
           font: { size: 11 },
+          padding: isMobile ? 8 : 12,
           usePointStyle: true,
         },
       },
@@ -79,7 +91,7 @@ export const CurrencyMixChart: React.FC<CurrencyMixChartProps> = ({ expenses }) 
   };
 
   return (
-    <div className="h-48 w-full relative flex items-center justify-center p-1">
+    <div className="h-56 sm:h-60 w-full relative flex items-center justify-center p-1">
       <Doughnut data={chartData} options={chartOptions} />
     </div>
   );

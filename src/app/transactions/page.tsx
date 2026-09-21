@@ -169,23 +169,23 @@ export default function TransactionsPage() {
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
           <button
             onClick={handleExportCSV}
             disabled={filteredExpenses.length === 0}
-            className="inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-space-900 border border-space-800 hover:border-purple-500/50 text-gray-200 hover:text-white font-montserrat text-xs font-semibold transition-all active:scale-95 disabled:opacity-50"
+            className="flex-1 sm:flex-none inline-flex items-center justify-center space-x-2 px-3.5 sm:px-4 py-2.5 rounded-xl bg-space-900 border border-space-800 hover:border-purple-500/50 text-gray-200 hover:text-white font-montserrat text-xs font-semibold transition-all active:scale-95 disabled:opacity-50"
             title="Export filtered transactions to CSV"
           >
-            <Download className="w-4 h-4 text-purple-400" />
-            <span>Export CSV</span>
+            <Download className="w-4 h-4 text-purple-400 flex-shrink-0" />
+            <span className="whitespace-nowrap">Export CSV</span>
           </button>
 
           <button
             onClick={handleOpenAddModal}
-            className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-montserrat text-sm font-semibold shadow-purple-glow transition-all active:scale-95"
+            className="flex-1 sm:flex-none inline-flex items-center justify-center space-x-2 px-4 sm:px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-montserrat text-xs sm:text-sm font-semibold shadow-purple-glow transition-all active:scale-95"
           >
-            <Plus className="w-4 h-4" />
-            <span>New Expense</span>
+            <Plus className="w-4 h-4 flex-shrink-0" />
+            <span className="whitespace-nowrap">New Expense</span>
           </button>
         </div>
       </div>

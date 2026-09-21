@@ -67,6 +67,18 @@ export const Sidebar: React.FC = () => {
     }
   }, []);
 
+  // Prevent background body scroll when mobile menu drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const toggleMobileNav = () => setIsOpen(!isOpen);
 
   const handleSignOut = async () => {

@@ -28,6 +28,17 @@ export const CategoryChart: React.FC<CategoryChartProps> = ({
   baseCurrency,
   ratesMap = {},
 }) => {
+  const [isMobile, setIsMobile] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const checkMobile = () => setIsMobile(window.innerWidth < 640);
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+    }
+  }, []);
+
   // Aggregate expenses by category using effective converted amount
   const categoryTotals = EXPENSE_CATEGORIES.reduce((acc, cat) => {
     acc[cat] = 0;
@@ -79,14 +90,14 @@ export const CategoryChart: React.FC<CategoryChartProps> = ({
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'right' as const,
+        position: isMobile ? ('bottom' as const) : ('right' as const),
         labels: {
           color: '#D1D5DB',
           font: {
             family: 'Inter, sans-serif',
-            size: 12,
+            size: isMobile ? 11 : 12,
           },
-          padding: 16,
+          padding: isMobile ? 8 : 16,
           usePointStyle: true,
           pointStyleWidth: 10,
         },
@@ -114,7 +125,7 @@ export const CategoryChart: React.FC<CategoryChartProps> = ({
   };
 
   return (
-    <div className="h-64 w-full relative flex items-center justify-center p-2">
+    <div className="h-64 sm:h-72 w-full relative flex items-center justify-center p-2">
       <Doughnut data={chartData} options={chartOptions} />
     </div>
   );

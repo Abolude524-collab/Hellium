@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Montserrat, Inter } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
@@ -17,6 +17,13 @@ const inter = Inter({
   weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#0b0f19',
+};
 
 export const metadata: Metadata = {
   title: 'Hellium - Multi-Currency Finance Tracker',

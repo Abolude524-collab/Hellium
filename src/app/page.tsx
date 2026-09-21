@@ -18,6 +18,8 @@ import {
   Target,
   PlusCircle,
   Award,
+  Menu,
+  X,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 
@@ -43,6 +45,7 @@ const DEMO_CURRENCIES = [
 
 export default function LandingPage() {
   const { user, loading } = useAuth();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Interactive Demo State
   const [demoAmount, setDemoAmount] = useState<number>(250);
@@ -62,7 +65,7 @@ export default function LandingPage() {
       <div className="absolute bottom-0 left-0 w-[700px] h-[500px] bg-purple-900/10 rounded-full blur-[150px] pointer-events-none -z-10" />
 
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-space-950/70 border-b border-space-900/80 transition-colors">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-space-950/80 border-b border-space-900/80 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center shadow-purple-glow group-hover:scale-105 transition-transform">
@@ -95,13 +98,13 @@ export default function LandingPage() {
           </nav>
 
           {/* Auth Action Buttons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3 sm:space-x-4">
             {!loading && user ? (
               <Link
                 href="/dashboard"
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-purple-500 text-white font-montserrat text-sm font-semibold shadow-purple-glow hover:from-purple-500 hover:to-purple-400 transition-all flex items-center space-x-2 group"
+                className="px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-purple-500 text-white font-montserrat text-xs sm:text-sm font-semibold shadow-purple-glow hover:from-purple-500 hover:to-purple-400 transition-all flex items-center space-x-2 group"
               >
-                <span>Go to Dashboard</span>
+                <span>Dashboard</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             ) : (
@@ -114,15 +117,74 @@ export default function LandingPage() {
                 </Link>
                 <Link
                   href="/signup"
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white font-montserrat text-sm font-semibold shadow-purple-glow hover:opacity-95 transition-all flex items-center space-x-2 group"
+                  className="px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white font-montserrat text-xs sm:text-sm font-semibold shadow-purple-glow hover:opacity-95 transition-all flex items-center space-x-2 group"
                 >
-                  <span>Get Started Free</span>
+                  <span>Get Started</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </>
             )}
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2.5 rounded-xl bg-space-900 border border-space-800 text-gray-300 hover:text-white focus:outline-none"
+              aria-label="Toggle Landing Menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-space-900/95 border-b border-space-800 px-4 py-5 space-y-4 font-montserrat text-sm animate-in fade-in slide-in-from-top-2 duration-200">
+            <a
+              href="#features"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-gray-300 hover:text-purple-300 py-1"
+            >
+              Features
+            </a>
+            <a
+              href="#converter"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-gray-300 hover:text-purple-300 py-1"
+            >
+              Live Converter
+            </a>
+            <a
+              href="#goals"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-gray-300 hover:text-purple-300 py-1"
+            >
+              Savings Goals
+            </a>
+            <a
+              href="#preview"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-gray-300 hover:text-purple-300 py-1"
+            >
+              Preview
+            </a>
+            <div className="pt-3 border-t border-space-800 flex items-center justify-between">
+              <Link
+                href="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-white font-medium"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/signup"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-2 rounded-xl bg-purple-600 text-white font-semibold text-xs shadow-purple-glow"
+              >
+                Create Account
+              </Link>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}

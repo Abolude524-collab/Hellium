@@ -7,11 +7,14 @@
   --foreground: #f3f4f6;
 }
 
+html,
 body {
   color: var(--foreground);
   background-color: var(--background);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Custom Scrollbars */
@@ -31,6 +34,15 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #374151;
+}
+
+/* Hide scrollbar for horizontal preset scroll containers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Ambient Glassmorphism utilities */

@@ -134,7 +134,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
         </div>
 
         {/* Preset Buttons */}
-        <div className="flex items-center gap-2 text-xs font-medium overflow-x-auto pb-1 sm:pb-0 sm:flex-wrap w-full sm:w-auto">
+        <div className="flex items-center gap-2 text-xs font-medium overflow-x-auto no-scrollbar pb-1 sm:pb-0 sm:flex-wrap w-full sm:w-auto">
           <button
             type="button"
             onClick={() => handleSelectPreset('THIS_MONTH')}
@@ -208,31 +208,31 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
       {showCustomPicker && (
         <form
           onSubmit={handleCustomSubmit}
-          className="pt-3 border-t border-space-800 flex flex-wrap items-center gap-3 text-xs"
+          className="pt-3 border-t border-space-800 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 text-xs"
         >
-          <div className="flex items-center space-x-2">
-            <span className="text-gray-400">From:</span>
+          <div className="flex items-center space-x-2 flex-1">
+            <span className="text-gray-400 min-w-10">From:</span>
             <input
               type="date"
               value={customStart}
               onChange={(e) => setCustomStart(e.target.value)}
-              className="bg-space-950 border border-space-800 rounded-lg px-3 py-1.5 text-gray-200 focus:outline-none focus:border-purple-500"
+              className="w-full bg-space-950 border border-space-800 rounded-lg px-3 py-1.5 text-gray-200 focus:outline-none focus:border-purple-500"
             />
           </div>
 
-          <div className="flex items-center space-x-2">
-            <span className="text-gray-400">To:</span>
+          <div className="flex items-center space-x-2 flex-1">
+            <span className="text-gray-400 min-w-10">To:</span>
             <input
               type="date"
               value={customEnd}
               onChange={(e) => setCustomEnd(e.target.value)}
-              className="bg-space-950 border border-space-800 rounded-lg px-3 py-1.5 text-gray-200 focus:outline-none focus:border-purple-500"
+              className="w-full bg-space-950 border border-space-800 rounded-lg px-3 py-1.5 text-gray-200 focus:outline-none focus:border-purple-500"
             />
           </div>
 
           <button
             type="submit"
-            className="px-4 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-semibold transition-colors shadow-sm"
+            className="w-full sm:w-auto px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-semibold transition-colors shadow-sm"
           >
             Apply Range
           </button>
